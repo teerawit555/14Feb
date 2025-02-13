@@ -88,18 +88,46 @@ h1 {
 
 .back-button {
     display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
+    text-align: center;
+    background: linear-gradient(45deg, #ff4d6d, #ff6b81);
     color: white;
-    background: #ff4d6d;
     padding: 12px 24px;
-    border-radius: 10px;
-    transition: 0.3s;
-    font-size: 1rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .back-button:hover {
-    background: #ff80a1;
+    background: linear-gradient(45deg, #ff6b81, #ff4d6d);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ปุ่มข้อความพิเศษ */
+.message-button {
+    display: inline-block;
+    text-align: center;
+    background: linear-gradient(45deg, #ff4d6d, #ff6b81);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* เอฟเฟกต์ Hover */
+.message-button:hover {
+    background: linear-gradient(45deg, #ff6b81, #ff4d6d);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .music-button {
@@ -191,6 +219,10 @@ h1 {
         font-size: 0.9rem;
         border-radius: 25px;
     }
+    .message-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -216,6 +248,10 @@ h1 {
         padding: 8px 16px;
         font-size: 0.85rem;
         border-radius: 20px;
+    }
+    .message-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
     }
 }
 

@@ -1,0 +1,252 @@
+/* พื้นหลังแบบ Gradient หวาน ๆ */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9aa2, #ffb6c1, #ffccd5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* คำแนะนำให้กด */
+.click-to-open {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.3rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 5; /* ให้อยู่ด้านบนสุด */
+    animation: blink 1s infinite alternate;
+}
+
+/* เอฟเฟกต์กระพริบ */
+@keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* ซองจดหมาย */
+.envelope-container {
+    position: relative;
+    width: 400px;
+    height: 280px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* เอฟเฟกต์สั่นเบา ๆ เมื่อ hover */
+.envelope-container:hover {
+    transform: scale(1.02) rotate(1deg);
+}
+
+/* ฝาปิดซอง (เป็นสามเหลี่ยม) */
+.envelope-top {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: #ff4d6d;
+    top: 0;
+    left: 0;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    z-index: 3;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ตัวซองจดหมาย */
+.envelope-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff6b81;
+    bottom: 0;
+    z-index: 2;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* เอฟเฟกต์เปิดซอง */
+.envelope-container.open .envelope-top {
+    transform: rotateX(180deg);
+}
+/* เอฟเฟกต์ซองจดหมายเลือนหาย */
+.envelope-container.open .envelope-body {
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+}
+
+/* ซ่อนซองจดหมายเมื่อเปิด */
+.envelope-container.hidden {
+    display: none;
+}
+/* เอฟเฟกต์กระดาษเลื่อนขึ้น */
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ฟอนต์ข้อความ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Merriweather:wght@300;400;700&display=swap');
+
+/* กระดาษจดหมาย */
+.letter-container {
+    display: none;
+    width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: left; /* จัดข้อความชิดซ้าย */
+    animation: fadeIn 0.5s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    position: relative;
+}
+
+/* เอฟเฟกต์แสดงตัว */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* เส้นขีดคั่น */
+.letter-container::before,
+.letter-container::after {
+    content: "✉️ ~~~~~~~~~~~~~~~~~~~~~~~~~ ✉️";
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: #ff4d6d;
+    margin-bottom: 10px;
+}
+
+/* หัวข้อ */
+.letter-container h1 {
+    font-size: 1.8rem;
+    color: #ff4d6d;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: 'Merriweather', serif;
+    text-align: center;
+}
+
+/* ข้อความหลัก */
+.letter-container p {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 400;
+    font-style: normal;
+    padding: 10px 0;
+    text-indent: 40px; /* เว้นวรรคเริ่มต้น */
+}
+
+/* ลายเซ็น */
+.signature {
+    text-align: right;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #ff4d6d;
+}
+
+/* ปุ่มกลับ */
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(45deg, #ff4d6d, #ff6b81);
+    padding: 5px 10px;
+    border-radius: 30px;
+    transition: all 0.3s;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* เอฟเฟกต์ Hover */
+.back-button:hover {
+    background: linear-gradient(45deg, #ff6b81, #ff4d6d);
+    transform: scale(1.05);
+}
+
+
+/* 🎯 Responsive สำหรับแท็บเล็ตและมือถือ */
+@media (max-width: 768px) {
+    .envelope-container {
+        width: 90%; /* ให้ขนาดลดลงตามหน้าจอ */
+        height: auto;
+        max-width: 320px;
+    }
+
+    .letter-container {
+        width: 90%;
+        max-width: 350px;
+        padding: 20px;
+    }
+
+    .letter-container h1 {
+        font-size: 1.5rem; /* ลดขนาดหัวข้อ */
+    }
+
+    .letter-container p {
+        font-size: 1rem; /* ลดขนาดข้อความ */
+        text-indent: 20px; /* ลดระยะเว้นวรรคเริ่มต้น */
+    }
+
+    .click-to-open {
+        font-size: 1rem; /* ลดขนาดข้อความแนะนำ */
+        padding: 8px 15px;
+    }
+}
+
+/* 🎯 Responsive สำหรับมือถือขนาดเล็ก */
+@media (max-width: 480px) {
+    .envelope-container {
+        width: 85%;
+        max-width: 280px;
+    }
+
+    .letter-container {
+        width: 85%;
+        max-width: 300px;
+        padding: 15px;
+    }
+
+    .letter-container h1 {
+        font-size: 1.3rem;
+    }
+
+    .letter-container p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .back-button {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+}

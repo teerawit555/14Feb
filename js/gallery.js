@@ -29,6 +29,7 @@ function createHeart() {
         heart.remove();
     }, duration * 1000);
 
+    // เล่นเพลง
     const music = document.getElementById("bg-music");
     const musicButton = document.getElementById("toggle-music");
 
